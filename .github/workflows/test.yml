@@ -1,0 +1,19 @@
+name: VanishMessage Test CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+      - run: bundle install
+
+      - name: Run Rspec test
+        run: bundle exec rspec
+
+      - name: Run Rubocop linter
+        run: bundle exec rubocop
